@@ -37,14 +37,6 @@ primary_region = "sin"  # See a list of regions here: https://fly.io/docs/refere
         port = 443
         handlers = ["tls", "http"]
 
-    #[[services.http_checks]]
-    #  grace_period = "5s"
-    #  interval = 5000
-    #  timeout = 2000
-    #  method = "get"
-    #  path = "/healthz"
-    #  protocol = "http"
-
     [services.concurrency]
         type = "connections"
         hard_limit = 25
@@ -52,3 +44,13 @@ primary_region = "sin"  # See a list of regions here: https://fly.io/docs/refere
 [[vm]]
   size = "shared-cpu-1x"
   memory = "512mb"
+
+[checks]
+  [checks.coder_http_check]
+    grace_period = "5s"
+    interval = 5000
+    timeout = 2000
+    port = 3000
+    type = "http"
+    method = "get"
+    path = "/healthz"
