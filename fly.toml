@@ -21,6 +21,7 @@ primary_region = "sin"  # See a list of regions here: https://fly.io/docs/refere
     CODER_PROXY_TRUSTED_HEADERS = "Fly-Client-IP"
     CODER_DERP_CONFIG_URL = "https://controlplane.tailscale.com/derpmap/default"
     CODER_PROVISIONER_DAEMONS = 2
+    CODER_SESSION_DURATION = "168h"
 
 [[services]]
     protocol = "tcp"
@@ -35,6 +36,15 @@ primary_region = "sin"  # See a list of regions here: https://fly.io/docs/refere
     [[services.ports]]
         port = 443
         handlers = ["tls", "http"]
+
+    [[services.http_checks]]
+      grace_period = "5s"
+      interval = 5000
+      timeout = 2000
+      method = "get"
+      path = "/healthz"
+      protocol = "http"
+
     [services.concurrency]
         type = "connections"
         hard_limit = 25
