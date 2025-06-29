@@ -22,6 +22,9 @@ primary_region = "sin"  # See a list of regions here: https://fly.io/docs/refere
     CODER_HTTP_ADDRESS = "0.0.0.0:3000"
     #CODER_VERBOSE = "true" # Uncomment this if you want to see more logs
     CODER_TELEMETRY_INSTALL_SOURCE = "fly.io"
+    CODER_PROXY_TRUSTED_HEADERS = "Fly-Client-IP"
+    CODER_DERP_CONFIG_URL = "https://controlplane.tailscale.com/derpmap/default"
+    CODER_PROVISIONER_DAEMONS = 2
 
 [[services]]
     protocol = "tcp"
