@@ -1,7 +1,7 @@
 app = "coder" # Replace <coder-app-name> with the name of your app
 kill_signal = "SIGINT"
 kill_timeout = 5
-primary_region = "ams"  # See a list of regions here: https://fly.io/docs/reference/regions/
+primary_region = "sea"  # See a list of regions here: https://fly.io/docs/reference/regions/
 
 [experimental]
     auto_rollback = true
