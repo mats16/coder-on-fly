@@ -30,7 +30,3 @@ flyctl secrets set CODER_PG_CONNECTION_URL=<connection-string> --app <coder-app-
 ```bash
 flyctl deploy --app <coder-app-name> --ha=false
 ```
-
-```bash
-flyctl scale memory 512 --app <coder-app-name>
-```
