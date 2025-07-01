@@ -19,7 +19,7 @@ Create a database on [Neon Console](https://console.neon.tech/app/projects?modal
 ### Set connection_url
 
 ```bash
-flyctl secrets set CODER_PG_CONNECTION_URL=<connection-string> --app <coder-app-name>
+flyctl secrets set "CODER_PG_CONNECTION_URL=<connection-string>" --app <coder-app-name>
 ```
 
 - Disable connection pooling
