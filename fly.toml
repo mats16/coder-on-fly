@@ -1,24 +1,25 @@
 kill_signal = "SIGINT"
 kill_timeout = 5
-primary_region = "nrt"  # See a list of regions here: https://fly.io/docs/reference/regions/
+primary_region = "iad"  # See a list of regions here: https://fly.io/docs/reference/regions/
 
 [experimental]
     auto_rollback = true
 
 [build]
-    image = "ghcr.io/coder/coder:v2.23.1"
+    dockerfile = "Dockerfile"
 
 [deploy]
     strategy = "rolling"
 
 [env]
-    CODER_ACCESS_URL = "https://coderd.fly.dev" # Replace <app-name> with the name of your app
-    CODER_HTTP_ADDRESS = "0.0.0.0:3000"
+    CODER_EXPERIMENTS = "*"
+    #CODER_ACCESS_URL = "https://coder-iad.fly.dev" # Replace <app-name> with the name of your app
+    #CODER_HTTP_ADDRESS = "0.0.0.0:3000"
     #CODER_VERBOSE = "true" # Uncomment this if you want to see more logs
     CODER_TELEMETRY_INSTALL_SOURCE = "fly.io"
     CODER_PROXY_TRUSTED_HEADERS = "Fly-Client-IP"
     CODER_DERP_CONFIG_URL = "https://controlplane.tailscale.com/derpmap/default"
-    CODER_PROVISIONER_DAEMONS = 1
+    CODER_PROVISIONER_DAEMONS = 3
     CODER_SESSION_DURATION = "168h" # 7 days
 
 [[services]]
@@ -43,8 +44,8 @@ primary_region = "nrt"  # See a list of regions here: https://fly.io/docs/refere
         hard_limit = 25
 
 [[vm]]
-    size = "shared-cpu-1x"
-    memory = "512mb"
+    size = "shared-cpu-2x"
+    memory = "1024mb"
 
 #[checks]
 #    [checks.coder_http_check]

@@ -19,14 +19,20 @@ Create a database on [Neon Console](https://console.neon.tech/app/projects?modal
 ### Set connection_url
 
 ```bash
-flyctl secrets set "CODER_PG_CONNECTION_URL=<connection-string>" --app <coder-app-name>
+fly secrets set "CODER_PG_CONNECTION_URL=<connection-string>" --app <coder-app-name>
 ```
 
 - Disable connection pooling
 - Remove `channel_binding` from connection string
 
+### Set azure subscription id
+
+```bash
+fly secrets set "ARM_SUBSCRIPTION_ID=<subscription-id>" --app <coder-app-name>
+```
+
 ### Deploy
 
 ```bash
-flyctl deploy --app <coder-app-name> --ha=false
+fly deploy --app <coder-app-name> --ha=false
 ```
